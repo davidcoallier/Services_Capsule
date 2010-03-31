@@ -154,30 +154,6 @@ class Services_Capsule_Kase extends Services_Capsule_Common
 
         return $this->parseResponse($response);
     }
-    
-    /**
-     * Get a list of custom fields
-     *
-     * List custom fields for a case. Note that boolean custom fields 
-     * that have been set to false will not be returned. 
-     *
-     * @link    /api/kase/{id}/customField
-     * @throws Services_Capsule_RuntimeException
-     *
-     * @param  double       $caseId        The case to retrieve 
-     *                                     the custom field from.
-     * @param  string       $fieldName     The custom field to retrieve.
-     *
-     * @return stdClass     A stdClass object containing the information from
-     *                      the json-decoded response from the server.
-     */    
-    public function getCustomField($caseId, $fieldName)
-    {
-        $url      = '/' . (double)$caseId . '/' . $fieldName;
-        $response = $this->sendRequest($url);
-        
-        return $this->parseResponse($response);
-    }
 
     /**
      * Delete a case
