@@ -273,25 +273,14 @@ abstract class Services_Capsule_Common
      * @return mixed               stdClass|bool A stdClass object of the 
      *                                           json-decode'ed body or true if
      *                                           the code is 201 (created)
-     *                                           Added picking of an id from a response
-     *                                           header for faster sequential selection.
      */
     protected function parseResponse(HTTP_Request2_Response $response)
     {
         $body = $response->getBody();
         $return = json_decode($body);
+        
         if (!($return instanceof stdClass)) {
             if ($response->getStatus() == 201 || $response->getStatus() == 200) {
-                $header = $response->getHeader();
-                $location = $header['location'];
-                $pattern = "#^.*/([0-9]+)$#";
-                $matches = array();
-                preg_match($pattern,$location,$matches);
-                if( sizeOf($matches) > 0 ){
-                  if( is_numeric($matches[1]) ){
-                    return $matches[1];
-                  }
-                }
                 return true;
             }
             
