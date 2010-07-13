@@ -1,7 +1,7 @@
 <?php
 /**
  * +-----------------------------------------------------------------------+
- * | Copyright (c) 2010, David Coallier                                    |
+ * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
  * | All rights reserved.                                                  |
  * |                                                                       |
  * | Redistribution and use in source and binary forms, with or without    |
@@ -44,11 +44,6 @@
  * @version   GIT: $Id$
  */
 
-require_once 'HTTP/Request2.php';
-
-require_once 'Services/Capsule/Exception.php';
-require_once 'Services/Capsule/Common.php';
-
 /**
  * Services_Capsule
  *
@@ -57,81 +52,64 @@ require_once 'Services/Capsule/Common.php';
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://capsulecrm.com/help/page/javelin_api_opportunity
  * @version  Release: @package_version@
  */
-class Services_Capsule extends Services_Capsule_Common
+class Services_Capsule_Opportunity_Task extends Services_Capsule_Common
 {
     /**
-     * Sections available to the API
+     * Get opportunity Tasks
      *
-     * @var array An array of sections available to the API
-     */
-    protected $sections = array();
-    
-    /**
-     * Constructor
+     * Retrieve a list of tasks for an opportunity. 
      *
-     * Initialize the class with the API token.
-     *
-     * @param string $token  The API Token you use for your API Calls
-     */
-    public function __construct($appName, $token)
-    {
-        $this->token   = $token;
-        $this->appName = $appName;
-    }
-
-    /**
-     * Magical Getter
-     *
+     * @link    /api/opportunity/{id}/tasks
      * @throws Services_Capsule_RuntimeException
      *
-     * @param string $sub Items, Meetings, Notes, Projects or User.
-     *
-     * @return mixed Services_Capsule_*
+     * @param  double       $opportunityId The opportunity to retrieve the tasks from.
+     * @return stdClass     A stdClass object containing the information from
+     *                      the json-decoded response from the server.
      */
-    public function __get($section)
+    public function getAll($opportunityId)
     {
-        $section = ucwords(strtolower($section));
-        switch ($section) {
-            case 'Party':
-            case 'Opportunity':
-            case 'Kase':
-            case 'Resource':
-            case 'Person':
-			case 'Organization':
-			case 'Task':
-
-            if (!isset($this->sections[$section])) {
-                $classname = 'Services_Capsule_' .$section;
-
-                if (!class_exists($classname)) {
-                    $filename  = str_replace('_', '/', $classname) . '.php';
-                    
-                    if (!(include $filename)) {
-                        throw new Services_Capsule_RuntimeException(
-                            'File ' . $filename . ' does not exist.'
-                        );
-                    }
-                    
-                }
-
-                $this->sections[$section] = new $classname;
-                
-                $this->sections[$section]
-                    ->setToken($this->token)
-                    ->setAppName($this->appName)
-                    ->setModuleName(strtolower($section));
-            }
-            
-            return $this->sections[$section];
-            break;
-
-        default:
-            throw new Services_Capsule_RuntimeException(
-                'Section '. $section .' is not a valid API call. If you believe this ' . 
-                'is wrong please report a bug on http://pear.php.net/Services_Capsule'
-            );
-        }
+        $url      = '/' . (double)$opportunityId . '/tasks';
+        $response = $this->sendRequest($url);
+        
+        return $this->parseResponse($response);
+    }
+    
+    /**
+     * Add a task to an opportunity
+     *
+     * Create a new task attached to an opportunity
+     *
+     * Example of input:
+     *
+     * <?php
+     *     $fields = array(
+     *         'description' => 'descrition of task',
+     *         'dueDateTime'    => '2010-04-21T15:00:00Z', 
+     *         ...
+     *     );
+     * ?>
+     *
+     * @link   /api/opportunity/{opportunity-id}/task
+     * @throws Services_Capsule_RuntimeException
+     *
+     * @param  double       $opportunityId       The oppID to add the task to.
+     * @param  array        $fields        		 An array of fields to create the task with.
+     *
+     * @return mixed bool|stdClass         		 A stdClass object containing the information from
+     *                                     		 the json-decoded response from the server.
+     */
+    public function add($opportnuityId, $fields)
+    {
+        $url         = '/' . (double)$opportunityId . '/task';
+        $task = array('task' => $fields);
+        
+        $response = $this->sendRequest(
+            $url, HTTP_Request2::METHOD_POST, json_encode($task)
+        );
+        
+        return $this->parseResponse($response);
     }
 }

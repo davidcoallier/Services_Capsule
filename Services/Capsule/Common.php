@@ -121,6 +121,7 @@ abstract class Services_Capsule_Common
             case 'Opportunity':
             case 'Customfield':
             case 'Milestone':
+			case 'Task':
             
             $currentModule = ucfirst(strtolower($this->moduleName));
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * +-----------------------------------------------------------------------+
- * | Copyright (c) 2010, David Coallier                                    |
+ * | Copyright (c) 2010, David Coallier & echolibre ltd                    |
  * | All rights reserved.                                                  |
  * |                                                                       |
  * | Redistribution and use in source and binary forms, with or without    |
@@ -44,11 +44,6 @@
  * @version   GIT: $Id$
  */
 
-require_once 'HTTP/Request2.php';
-
-require_once 'Services/Capsule/Exception.php';
-require_once 'Services/Capsule/Common.php';
-
 /**
  * Services_Capsule
  *
@@ -57,81 +52,66 @@ require_once 'Services/Capsule/Common.php';
  * @author   David Coallier <david@echolibre.com>
  * @license  http://www.opensource.org/licenses/bsd-license.php The BSD License
  * @link     http://github.com/davidcoallier/Services_Capsule
+ * @link     http://capsulecrm.com/help/page/javelin_api_party
  * @version  Release: @package_version@
  */
-class Services_Capsule extends Services_Capsule_Common
+class Services_Capsule_Party_Task extends Services_Capsule_Common
 {
+
     /**
-     * Sections available to the API
+     * Get a list of party tasks
      *
-     * @var array An array of sections available to the API
+     * This method returns a list of tasks associated
+     * to a particular party.
+     *
+     * @link    /api/party/{party-id}/tasks
+     * @throws Services_Capsule_RuntimeException
+     *
+     * @param  double       $partyId  The party to retrieve the tasks from.
+     * @return stdClass     A stdClass object containing the information from
+     *                      the json-decoded response from the server.
      */
-    protected $sections = array();
-    
-    /**
-     * Constructor
-     *
-     * Initialize the class with the API token.
-     *
-     * @param string $token  The API Token you use for your API Calls
-     */
-    public function __construct($appName, $token)
+    public function getAll($partyId)
     {
-        $this->token   = $token;
-        $this->appName = $appName;
+        $url      = '/' . (double)$partyId . '/tasks';
+        $response = $this->sendRequest($url);
+
+        return $this->parseResponse($response);
     }
 
     /**
-     * Magical Getter
+     * Add a task to a party
      *
+     * Create a new task attached to this person or organisation
+     *
+     * Example of input:
+     *
+     * <?php
+     *     $fields = array(
+     *         'description' => 'descrition of task',
+     *         'dueDateTime'    => '2010-04-21T15:00:00Z', 
+     *         ...
+     *     );
+     * ?>
+     *
+     * @link   /api/party/{party-id}/task
      * @throws Services_Capsule_RuntimeException
      *
-     * @param string $sub Items, Meetings, Notes, Projects or User.
+     * @param  double       $partyId       The party/org to add the task to.
+     * @param  array        $fields        An array of fields to create the opp with.
      *
-     * @return mixed Services_Capsule_*
+     * @return mixed bool|stdClass         A stdClass object containing the information from
+     *                                     the json-decoded response from the server.
      */
-    public function __get($section)
+    public function add($partyId, $fields)
     {
-        $section = ucwords(strtolower($section));
-        switch ($section) {
-            case 'Party':
-            case 'Opportunity':
-            case 'Kase':
-            case 'Resource':
-            case 'Person':
-			case 'Organization':
-			case 'Task':
-
-            if (!isset($this->sections[$section])) {
-                $classname = 'Services_Capsule_' .$section;
-
-                if (!class_exists($classname)) {
-                    $filename  = str_replace('_', '/', $classname) . '.php';
-                    
-                    if (!(include $filename)) {
-                        throw new Services_Capsule_RuntimeException(
-                            'File ' . $filename . ' does not exist.'
-                        );
-                    }
-                    
-                }
-
-                $this->sections[$section] = new $classname;
-                
-                $this->sections[$section]
-                    ->setToken($this->token)
-                    ->setAppName($this->appName)
-                    ->setModuleName(strtolower($section));
-            }
-            
-            return $this->sections[$section];
-            break;
-
-        default:
-            throw new Services_Capsule_RuntimeException(
-                'Section '. $section .' is not a valid API call. If you believe this ' . 
-                'is wrong please report a bug on http://pear.php.net/Services_Capsule'
-            );
-        }
+        $url         = '/' . (double)$partyId . '/task';
+        $task = array('task' => $fields);
+        
+        $response = $this->sendRequest(
+            $url, HTTP_Request2::METHOD_POST, json_encode($task)
+        );
+        
+        return $this->parseResponse($response);
     }
 }
