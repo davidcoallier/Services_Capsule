@@ -169,6 +169,41 @@ class Services_Capsule_Task extends Services_Capsule_Common
         
         return $this->parseResponse($response);
     }
+	
+    /**
+     * Add a task (unnattached)
+     *
+     * Create a new task not attached to a party, opp or case
+     *
+     * Example of input:
+     *
+     * <?php
+     *     $fields = array(
+     *         'description' => 'descrition of task',
+     *         'dueDateTime'    => '2010-04-21T15:00:00Z', 
+     *         ...
+     *     );
+     * ?>
+     *
+     * @link   /api/task
+     * @throws Services_Capsule_RuntimeException
+     *
+     * @param  array        $fields        An array of fields to create the task with.
+     *
+     * @return mixed bool|stdClass         A stdClass object containing the information from
+     *                                     the json-decoded response from the server.
+     */
+    public function add($fields)
+    {
+        $url         = '';
+        $task = array('task' => $fields);
+        
+        $response = $this->sendRequest(
+            $url, HTTP_Request2::METHOD_POST, json_encode($task)
+        );
+        
+        return $this->parseResponse($response);
+    }
     
     /**
      * Update a task
