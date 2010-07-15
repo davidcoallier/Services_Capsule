@@ -101,7 +101,7 @@ class Services_Capsule_Opportunity_Task extends Services_Capsule_Common
      * @return mixed bool|stdClass         		 A stdClass object containing the information from
      *                                     		 the json-decoded response from the server.
      */
-    public function add($opportnuityId, $fields)
+    public function add($opportunityId, $fields)
     {
         $url         = '/' . (double)$opportunityId . '/task';
         $task = array('task' => $fields);
