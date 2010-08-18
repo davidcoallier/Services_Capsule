@@ -12,7 +12,7 @@ $packagexml->setOptions(array('filelistgenerator' => 'file',
           'docs'     => 'doc',
           'tests'    => 'test'
       ),
-      'ignore' => array('package.php', 'package.xml', 'Services_Capsule.tmprj'),
+      'ignore' => array('package.php', 'package.xml', 'Services_Capsule.tmproj', 'package.xml.old'),
       'simpleoutput' => true));
 $packagexml->setPackageType('php');
 $packagexml->addRelease();
@@ -26,7 +26,7 @@ $packagexml->setSummary('A package to access the Capsule CRM webservice');
 $packagexml->setDescription('This package provides developers with a complete set of Capsule CRM web service access ');
 $packagexml->setNotes('Initial release');
 $packagexml->setPhpDep('5.2.0');
-$packagexml->setPearinstallerDep('1.4.0a12');
+$packagexml->setPearinstallerDep('1.6.0');
 $packagexml->addPackageDepWithChannel('required', 'HTTP_Request2', 'pear.php.net', '0.5.1');
 $packagexml->addMaintainer('lead', 'davidc', 'David Coallier', 'davidc@php.net');
 $packagexml->setLicense('BSD License', 'http://www.opensource.org/licenses/bsd-license.html');

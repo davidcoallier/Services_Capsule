@@ -14,7 +14,7 @@
   <active>yes</active>
  </lead>
  <date>2010-08-18</date>
- <time>17:46:33</time>
+ <time>18:01:18</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -209,13 +209,10 @@ Initial release
      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
     </file>
    </dir> <!-- /tests -->
-   <file name="package.xml.old" role="data">
+   <file name="LICENSE" role="data">
     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
    </file>
    <file name="README.md" role="data">
-    <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-   </file>
-   <file name="Services_Capsule.tmproj" role="data">
     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
    </file>
   </dir> <!-- / -->
@@ -226,7 +223,7 @@ Initial release
     <min>5.2.0</min>
    </php>
    <pearinstaller>
-    <min>1.4.0a12</min>
+    <min>1.6.0</min>
    </pearinstaller>
    <package>
     <name>HTTP_Request2</name>
