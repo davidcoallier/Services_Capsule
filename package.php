@@ -6,7 +6,13 @@ PEAR::setErrorHandling(PEAR_ERROR_DIE);
 $packagexml = new PEAR_PackageFileManager2();
 $packagexml->setOptions(array('filelistgenerator' => 'file',
       'packagedirectory' => dirname(__FILE__),
-      'baseinstalldir' => 'Services',
+      'baseinstalldir' => '/',
+      'dir_roles' => array(
+          'examples' => 'doc',
+          'docs'     => 'doc',
+          'tests'    => 'test'
+      ),
+      'ignore' => array('package.php', 'package.xml', 'Services_Capsule.tmprj'),
       'simpleoutput' => true));
 $packagexml->setPackageType('php');
 $packagexml->addRelease();

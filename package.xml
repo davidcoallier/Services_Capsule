@@ -13,8 +13,8 @@
   <email>davidc@php.net</email>
   <active>yes</active>
  </lead>
- <date>2010-03-31</date>
- <time>22:55:32</time>
+ <date>2010-08-18</date>
+ <time>17:46:33</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -28,83 +28,70 @@
 Initial release
  </notes>
  <contents>
-  <dir baseinstalldir="Services" name="/">
-   <dir name="cache">
-    <file name="2ebcc04e99cbc7cc1ca787d74122d82drest.cachefile" role="data">
-     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-    </file>
-    <file name="2ebcc04e99cbc7cc1ca787d74122d82drest.cacheid" role="data">
-     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-    </file>
-    <file name="5e63b049f241d5255445c2faac3adda1rest.cachefile" role="data">
-     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-    </file>
-    <file name="5e63b049f241d5255445c2faac3adda1rest.cacheid" role="data">
-     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-    </file>
-    <file name="64b72a98695fccb8c027351f85bbab87rest.cachefile" role="data">
-     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-    </file>
-    <file name="64b72a98695fccb8c027351f85bbab87rest.cacheid" role="data">
-     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-    </file>
-    <file name="d632d5e80720c4b591910367acd714d4rest.cachefile" role="data">
-     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-    </file>
-    <file name="d632d5e80720c4b591910367acd714d4rest.cacheid" role="data">
-     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-    </file>
-   </dir> <!-- /cache -->
-   <dir name="examples">
-    <dir name="live">
-     <file name="testopportunityupdate.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-    </dir> <!-- /examples/live -->
-    <dir name="opportunity">
-     <file name="addopportunityhistorynote.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-     <file name="addopportunitytag.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-     <file name="deleteopportunitytag.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-     <file name="getanyopportunity.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-     <file name="getopportunity.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-     <file name="getopportunitytags.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-     <file name="listopportunities.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-    </dir> <!-- /examples/opportunity -->
-    <dir name="party">
-     <file name="getanyparty.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-     <file name="getparty.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-     <file name="getpartypeople.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-     <file name="listparties.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-     <file name="searchparties.php" role="doc">
-      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-     </file>
-    </dir> <!-- /examples/party -->
-    <file name="config.php.tpl" role="doc">
-     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
-    </file>
-   </dir> <!-- /examples -->
+  <dir baseinstalldir="/" name="/">
+   <dir name="docs">
+    <dir name="examples">
+     <dir name="Services_Capsule">
+      <dir name="live">
+       <file name="blogexample.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+       <file name="getoppbysalesperson.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+       <file name="testopportunityupdate.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+      </dir> <!-- /docs/examples/Services_Capsule/live -->
+      <dir name="opportunity">
+       <file name="addopportunityhistorynote.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+       <file name="addopportunitytag.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+       <file name="deleteopportunitytag.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+       <file name="getanyopportunity.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+       <file name="getopportunity.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+       <file name="getopportunitytags.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+       <file name="listopportunities.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+      </dir> <!-- /docs/examples/Services_Capsule/opportunity -->
+      <dir name="party">
+       <file name="getanyparty.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+       <file name="getparty.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+       <file name="getpartypeople.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+       <file name="listparties.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+       <file name="searchparties.php" role="doc">
+        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+       </file>
+      </dir> <!-- /docs/examples/Services_Capsule/party -->
+      <file name="config.php" role="doc">
+       <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+      </file>
+      <file name="config.php.tpl" role="doc">
+       <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+      </file>
+     </dir> <!-- /docs/examples/Services_Capsule -->
+    </dir> <!-- /docs/examples -->
+   </dir> <!-- /docs -->
    <dir name="Services">
     <dir name="Capsule">
      <dir name="Kase">
@@ -123,6 +110,9 @@ Initial release
       <file name="Tag.php" role="php">
        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
       </file>
+      <file name="Task.php" role="php">
+       <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+      </file>
      </dir> <!-- /Services/Capsule/Kase -->
      <dir name="Opportunity">
       <file name="Customfield.php" role="php">
@@ -138,6 +128,9 @@ Initial release
        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
       </file>
       <file name="Tag.php" role="php">
+       <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+      </file>
+      <file name="Task.php" role="php">
        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
       </file>
      </dir> <!-- /Services/Capsule/Opportunity -->
@@ -158,6 +151,9 @@ Initial release
        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
       </file>
       <file name="Tag.php" role="php">
+       <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+      </file>
+      <file name="Task.php" role="php">
        <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
       </file>
      </dir> <!-- /Services/Capsule/Party -->
@@ -185,12 +181,35 @@ Initial release
      <file name="Resource.php" role="php">
       <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
      </file>
+     <file name="Task.php" role="php">
+      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+     </file>
     </dir> <!-- /Services/Capsule -->
     <file name="Capsule.php" role="php">
      <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
     </file>
    </dir> <!-- /Services -->
-   <file name="package.php" role="php">
+   <dir name="tests">
+    <file name="AllTests.php" role="test">
+     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+    </file>
+    <file name="CapsuleOpportunityTestCase.php" role="test">
+     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+    </file>
+    <file name="CapsulePartyTestCase.php" role="test">
+     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+    </file>
+    <file name="CapsuleTestCase.php" role="test">
+     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+    </file>
+    <file name="config.ini" role="test">
+     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+    </file>
+    <file name="config.ini-dist" role="test">
+     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
+    </file>
+   </dir> <!-- /tests -->
+   <file name="package.xml.old" role="data">
     <tasks:replace from="@PEAR-VER@" to="version" type="package-info" />
    </file>
    <file name="README.md" role="data">
@@ -227,7 +246,7 @@ Initial release
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2010-03-31</date>
+   <date>2010-08-18</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.html">BSD License</license>
    <notes>
 Initial release

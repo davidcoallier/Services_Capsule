@@ -5,17 +5,16 @@ set_include_path(
     
 
 require_once 'Services/Capsule.php';
+include dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'config.php';
 
-include '../config.php';
-
-// Fetch "Any" by tag
+// Fetch "Any" by email
 $getAnyParameters = array(
-    'tag' => 'test',
+    'tag' => 'sales',
 );
 
 try {
     $capsule = new Services_Capsule($config['appName'], $config['token']);
-    $res = $capsule->opportunity->getAny($getAnyParameters);
+    $res = $capsule->party->getAny($getAnyParameters);
 } catch (Services_Capsule_Exception $e) {
     print_r($e);
     die();
