@@ -124,7 +124,7 @@ class Services_Capsule_Party_Cases extends Services_Capsule_Common
      * @return mixed bool|stdClass         A stdClass object containing the information from
      *                                     the json-decoded response from the server.
      */
-    public function update($partyId, $fieldId, $fields)
+    public function update($partyId, $caseId, $fields)
     {
         $url  = '/' . (double)$partyId . '/kase/ ' . (double)$caseId;
         $case = array('kase' => $fields);

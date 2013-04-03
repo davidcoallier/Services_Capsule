@@ -76,7 +76,7 @@ class Services_Capsule_Kase_Customfield extends Services_Capsule_Common
      */    
     public function getAll($caseId)
     {
-        $url      = '/' . (double)$caseId . '/customfield';
+        $url      = '/' . (double)$caseId . '/customfields';
         $response = $this->sendRequest($url);
         
         return $this->parseResponse($response);
@@ -117,18 +117,25 @@ class Services_Capsule_Kase_Customfield extends Services_Capsule_Common
      */
     public function add($caseId, array $fields)
     {
-        if (!isset($fields['boolean'])) {
+        /* Temporarily commented out: 
+		 * Not sure why the code below is required,
+		 * it was preventing this method from working
+		 * as expected - J. Nolan (04/03/2013)
+		
+		if (!isset($fields['boolean'])) {
             throw new Services_Capsule_RuntimeException(
                 '"boolean" parameter of second parameter required ' . 
                 'Ex: ("boolean" => "true")'
             );
-        }
+        } 
+		
+		 ***/
         
-        $url         = '/' . (double)$caseId . '/customfield';
-        $customField = array('customField' => $fields);
+        $url         = '/' . (double)$caseId . '/customfields';
+        $customFields = array('customFields' => array('customField' => $fields));
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_POST, json_encode($customField)
+            $url, HTTP_Request2::METHOD_POST, json_encode($customFields)
         );
         
         return $this->parseResponse($response);
