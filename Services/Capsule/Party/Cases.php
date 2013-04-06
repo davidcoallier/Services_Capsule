@@ -31,17 +31,19 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
+ * | Contributor: J. Nolan <jeff@nolaninteractive.com>                     |
  * +-----------------------------------------------------------------------+
  *
  * PHP version 5
+ * Services_Capsule
  *
- * @category  Services
- * @package   Services_Capsule
- * @author    David Coallier <david@echolibre.com>
- * @copyright echolibre ltd. 2009-2010
- * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
- * @link      http://github.com/davidcoallier/Services_Capsule
- * @version   GIT: $Id$
+ * @category  	Services
+ * @author    	David Coallier <david@echolibre.com>
+ * @contributor	Jeff Nolan <jeff@nolaninteractive.com>
+ * @copyright 	echolibre ltd. 2009-2010
+ * @license   	http://www.opensource.org/licenses/bsd-license.php The BSD License
+ * @link      	http://github.com/davidcoallier/Services_Capsule
+ * @version   	GIT: $Id$
  */
 
 /**
@@ -87,13 +89,15 @@ class Services_Capsule_Party_Cases extends Services_Capsule_Common
      * @throws Services_Capsule_RuntimeException
      *
      * @param  double       $partyId       The party id to create the new case in.
-     * @param  array        $fields        An assoc array of fields to add in the new
-     *                                     case
+     * @param  array        $fields        An assoc array of fields to add in the new case
+	 * @param  bool			$returnid      Indicates whether or not to return the newly created
+	 *                                     case ID or the stdClass object.
      *
-     * @return mixed bool|stdClass         A stdClass object containing the information from
-     *                                     the json-decoded response from the server.
+	 * @return mixed bool|stdClass|double  A stdClass object containing the information from
+     *                                     the json-decoded response from the server,
+	 *                                     Or the case ID (double)
      */
-    public function add($partyId, array $fields)
+    public function add($partyId, array $fields, $returnid=false)
     {
         
         $url  = '/' . (double)$partyId . '/kase';
@@ -103,10 +107,15 @@ class Services_Capsule_Party_Cases extends Services_Capsule_Common
             $url, HTTP_Request2::METHOD_POST, json_encode($case)
         );
         
-        return $this->parseResponse($response);
+		if ($returnid) {
+			$header = $response->getHeader();
+			return $this->getCaseIdFromString($header['location']);
+		} else {
+        	return $this->parseResponse($response);
+		}
     }
     
-    /**
+	/**
      * Update the case of a party
      *
      * Update the case, if moving the case to 
@@ -135,4 +144,17 @@ class Services_Capsule_Party_Cases extends Services_Capsule_Common
         
         return $this->parseResponse($response);
     }
+	/**
+     * Return the Case ID from the URL provided
+     *
+     * @param url string  $url  The URL that contains the case ID
+     *
+     * @return mixed int|string   Case ID number
+     *
+     */
+	private function getCaseIdFromString($str="/")
+	{
+		$path = pathinfo($str);
+		return (double)$path['basename'];
+	}
 }
