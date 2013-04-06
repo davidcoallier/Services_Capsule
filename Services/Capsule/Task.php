@@ -31,17 +31,19 @@
  * |                                                                       |
  * +-----------------------------------------------------------------------+
  * | Author: David Coallier <david@echolibre.com>                          |
+ * | Contributor: J. Nolan <jeff@nolaninteractive.com>                     |
  * +-----------------------------------------------------------------------+
  *
  * PHP version 5
  *
- * @category  Services
- * @package   Services_Capsule
- * @author    David Coallier <david@echolibre.com>
- * @copyright echolibre ltd. 2009-2010
- * @license   http://www.opensource.org/licenses/bsd-license.php The BSD License
- * @link      http://github.com/davidcoallier/Services_Capsule
- * @version   GIT: $Id$
+ * @category  	Services
+ * @package   	Services_Capsule
+ * @author    	David Coallier <david@echolibre.com>
+ * @contributor	Jeff Nolan <jeff@nolaninteractive.com>
+ * @copyright 	echolibre ltd. 2009-2010
+ * @license   	http://www.opensource.org/licenses/bsd-license.php The BSD License
+ * @link      	http://github.com/davidcoallier/Services_Capsule
+ * @version   	GIT: $Id$
  */
 
 /**
