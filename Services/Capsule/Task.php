@@ -138,12 +138,8 @@ class Services_Capsule_Task extends Services_Capsule_Common
      */
     public function complete($taskId)
     {
-        $url         = '/' . (double)$taskId . '/complete';
-        
-        $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_POST)
-        );
-        
+        $url = '/' . (double)$taskId . '/complete';
+        $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST);
         return $this->parseResponse($response);
     }
     
@@ -163,12 +159,8 @@ class Services_Capsule_Task extends Services_Capsule_Common
      */
     public function reopen($taskId)
     {
-        $url         = '/' . (double)$taskId . '/repoen';
-        
-        $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_POST)
-        );
-        
+        $url = '/' . (double)$taskId . '/repoen';
+        $response = $this->sendRequest($url, HTTP_Request2::METHOD_POST);
         return $this->parseResponse($response);
     }
 	
