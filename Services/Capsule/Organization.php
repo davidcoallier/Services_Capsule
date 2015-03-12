@@ -116,7 +116,7 @@ class Services_Capsule_Organization extends Services_Capsule_Common
         $organization = array('organization' => $fields);
 
         $response = $this->sendRequest(
-            $url, HTTP_Request2::METHOD_PUT, json_encode($person)
+            $url, HTTP_Request2::METHOD_PUT, json_encode($organization)
         );
         
         return $this->parseResponse($response);
