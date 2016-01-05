@@ -117,12 +117,6 @@ class Services_Capsule_Party_Customfield extends Services_Capsule_Common
      */
     public function add($partyId, array $fields)
     {
-        if (!isset($fields['boolean'])) {
-            throw new Services_Capsule_RuntimeException(
-                '"boolean" parameter of second parameter required ' . 
-                'Ex: ("boolean" => "true")'
-            );
-        }
         
         $url         = '/' . (double)$partyId . '/customfield';
         $customField = array('customField' => $fields);
