@@ -29,6 +29,7 @@ $packagexml->setPhpDep('5.2.0');
 $packagexml->setPearinstallerDep('1.6.0');
 $packagexml->addPackageDepWithChannel('required', 'HTTP_Request2', 'pear.php.net', '0.5.1');
 $packagexml->addMaintainer('lead', 'davidc', 'David Coallier', 'davidc@php.net');
+$packagexml->addMaintainer('developer', 'nolan-interactive', 'Jeff Nolan', 'jeff@nolaninteractive.com');
 $packagexml->setLicense('BSD License', 'http://www.opensource.org/licenses/bsd-license.html');
 $packagexml->addGlobalReplacement('package-info', '@PEAR-VER@', 'version');
 $packagexml->generateContents();
