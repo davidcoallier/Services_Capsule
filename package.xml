@@ -24,6 +24,14 @@
   <api>alpha</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.html">BSD License</license>
+ <maintainers>
+  <maintainer>
+    <user>nolan-interactive</user>
+    <role>Contributor</role>
+    <name>Jeff Nolan</name>
+    <email>jeff@nolaninteractive.com</email>
+  </maintainer>
+ </maintainers>
  <notes>
 Initial release
  </notes>
