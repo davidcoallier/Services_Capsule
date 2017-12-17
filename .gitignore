@@ -1,0 +1,16 @@
+**/.*
+*.lock
+*-lock.json
+*.sublime-work*
+*.log
+*.paw
+.DS_Store
+dwsync.xml
+logs/
+vendor/
+node_modules/
+bower_components/
+tmp/
+cache/
+!.gitignore
+!.htaccess
